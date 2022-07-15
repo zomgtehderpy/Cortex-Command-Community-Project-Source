@@ -237,12 +237,12 @@ namespace RTE {
 			return slice->GetDescription() == description && slice->GetFunctionName() == functionName;
 		});
 
-		PieSlice foundSlice;
 		if (sliceIterator != m_CurrentSlices.end() && (*sliceIterator)->GetType() != PieSlice::PieSliceIndex::PSI_NONE) {
+
+			PieSlice foundSlice(RemovePieSliceLua(description, functionName));
 			foundSlice.SetDirection(direction);
 			foundSlice.SetEnabled(isEnabled);
 
-			RemovePieSliceLua(description, functionName);
 			AddSlice(foundSlice);
 
 			RealignSlices();
