@@ -44,8 +44,10 @@ namespace RTE {
 				}
 			}
 		} else {
-			itemIcons.emplace_back(Item->GetGraphicalIcon());
-			totalItemMass += Item->GetMass();
+			if (Item && Item->GetUniqueID() != 0) {
+				itemIcons.emplace_back(Item->GetGraphicalIcon());
+				totalItemMass += Item->GetMass();
+			}
 		}
 	}
 
